@@ -1,0 +1,24 @@
+{
+  "name": "noconsole",
+  "version": "1.0.0",
+  "description": "A CLI tool to remove console.log statements from codebases",
+  "main": "src/index.js",
+  "bin": {
+    "noconsole": "./src/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "console.log",
+    "code-cleanup",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "glob": "^10.3.10"
+  }
+} 
