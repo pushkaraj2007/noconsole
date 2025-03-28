@@ -5,7 +5,7 @@ A CLI tool to remove console.log statements from your codebase.
 ## Installation
 
 ```bash
-npm install -g noconsole
+npm install -g @thepushkaraj/noconsole
 ```
 
 ## Usage
