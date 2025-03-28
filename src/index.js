@@ -1,40 +1,27 @@
 #!/usr/bin/env node
 
-const { program } = require('commander');
-const fs = require('fs');
-const path = require('path');
-const glob = require('glob');
+import { program } from 'commander';
+import fs from 'fs';
+import path from 'path';
+import { glob } from 'glob';
+import chalk from 'chalk';
+import inquirer from 'inquirer';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-// Dynamic imports
-let chalk;
-let inquirer;
-(async () => {
-  chalk = await import('chalk');
-  chalk = chalk.default;
-  inquirer = await import('inquirer');
-  inquirer = inquirer.default;
-})();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 program
   .name('noconsole')
   .description('Remove console.log statements from your codebase')
-  .version('1.0.0')
+  .version('1.0.2')
   .argument('<directory>', 'Directory to process')
   .option('-p, --pattern <pattern>', 'File pattern to match', '**/*.{js,jsx,ts,tsx}')
   .option('-d, --dry-run', 'Show what would be removed without making changes')
   .option('-e, --exclude <patterns...>', 'Patterns to exclude (comma-separated)')
   .action(async (directory, options) => {
     try {
-      // Ensure modules are loaded
-      if (!chalk) {
-        chalk = await import('chalk');
-        chalk = chalk.default;
-      }
-      if (!inquirer) {
-        inquirer = await import('inquirer');
-        inquirer = inquirer.default;
-      }
-
       // Default ignore patterns
       const defaultIgnores = ['**/node_modules/**', '**/dist/**', '**/build/**'];
       
